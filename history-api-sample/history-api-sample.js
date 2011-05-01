@@ -17,6 +17,10 @@ function setEventHandler()
 
 	window.addEventListener('popstate',
 		function(e) {
+			if (console && e.state != null) {	// for Chrome
+				console.log('previous access title=[' + e.state.title + '] ' +
+					'time=[' + e.state.previous_access_time + ']');
+			}
 			swapContents(location.pathname);
 		}, false
 	);
@@ -25,7 +29,8 @@ function setEventHandler()
 function menuItemClickHandler(e)
 {
 	swapContents(this.href);
-	history.pushState(null, null, this.href);
+//	history.pushState({'title':this.title, 'previous_access_time':new Date()}, this.title, this.href);
+	history.pushState({'title':this.title, 'previous_access_time':new Date()}, this.title);
 	e.preventDefault();
 }
 
