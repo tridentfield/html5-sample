@@ -29,8 +29,7 @@ function setEventHandler()
 function menuItemClickHandler(e)
 {
 	swapContents(this.href);
-//	history.pushState({'title':this.title, 'previous_access_time':new Date()}, this.title, this.href);
-	history.pushState({'title':this.title, 'previous_access_time':new Date()}, this.title);
+	history.pushState({'title':this.title, 'previous_access_time':new Date()}, this.title, this.href);
 	e.preventDefault();
 }
 
